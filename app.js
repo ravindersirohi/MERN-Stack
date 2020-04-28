@@ -11,7 +11,7 @@ mongoose
     .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Database connected...'))
     .catch(err => console.log(err));
-app.use('/item', item);
+app.use('/api/item', item);
 app.get('/', (req, resp) => {
     resp.send('Welcome to Restful API !!');
 })
