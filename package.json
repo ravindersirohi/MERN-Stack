@@ -1,7 +1,7 @@
 {
   "name": "mern-stack",
   "version": "1.0.0",
-  "description": "Mango DB, Express, ReactJS and NodeJS web app.",
+  "description": "Mongo DB, Express, ReactJS and NodeJS web app.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/ravindersirohi/MERN-Stack.git"
   },
   "keywords": [
-    "MangoDb",
+    "MongoDb",
     "ExpressJS",
     "ReactJS",
     "NodeJS"

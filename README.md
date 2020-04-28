@@ -1,5 +1,5 @@
 # MERN-Stack
-MangoDb, Express, React and Node (MERN) web app.
+MongoDb, Express, React and Node (MERN) web app.
 
 # Client App
 ReactJS, Redux, ReactStrap and NodeJS
@@ -8,4 +8,4 @@ ReactJS, Redux, ReactStrap and NodeJS
 ExpressJS
 
 # Database
-MangoDb
+MongoDb
