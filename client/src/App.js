@@ -1,10 +1,11 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import AppMenu from './components/AppMenu';
 function App() {
   return (
     <div className="App">
-      <h3>My List</h3>
+      <AppMenu />
     </div>
   );
 }
