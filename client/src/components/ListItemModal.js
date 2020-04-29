@@ -17,6 +17,12 @@ class ListItemModal extends Component {
     submit = event => {
         event.preventDefault();
         console.table(this.state);
+        const newListItem = {
+            id : 5,
+            name:this.state.name,
+            quantity:this.state.quantity
+        }
+        this.props.addListItem(newListItem);
         this.toggle();
     }
     onChange = event => {
@@ -56,6 +62,4 @@ const mapStateToProps = (state) => ({
     itemList: state.itemList
 });
 
-export default connect(mapStateToProps, {
-    addListItem,
-})(ListItemModal);
+export default connect(mapStateToProps, { addListItem, })(ListItemModal);

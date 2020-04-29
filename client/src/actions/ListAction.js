@@ -13,7 +13,7 @@ export const deleteListItem = id => {
 };
 export const addListItem = listItem => {
     return {
-        type: DELETE_LIST_ITEM,
+        type: ADD_LIST_ITEM,
         payload: listItem
     };
 };

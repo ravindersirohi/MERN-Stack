@@ -18,6 +18,11 @@ export default (state = initState, action) => {
                 ...state,
                 myItems: state.myItems.filter(item => item.id !== action.payload)
             }
+        case ADD_LIST_ITEM:
+            return {
+                ...state,
+                myItems: [action.payload,...state.myItems]
+            }
         default:
             return state;
     }
