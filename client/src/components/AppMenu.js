@@ -15,7 +15,7 @@ class AppMenu extends Component {
             <div>
                 <Navbar color="dark" dark expand="sm" className="sm-5">
                     <Container>
-                        <NavbarBrand><strong>My</strong>List</NavbarBrand>
+                        <NavbarBrand><strong>My</strong> LIST</NavbarBrand>
                         <NavbarToggler onClick={this.toggle} />
                         <Collapse isOpen={this.state.isOpen} navbar>
                             <Nav className="ml-auto" navbar>
