@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Button, Label } from 'reactstrap';
 import { connect } from 'react-redux';
 import { addListItem } from '../actions/ListAction';
+import PropTypes from 'prop-types';
 class ListItemModal extends Component {
 
     state = {
@@ -18,7 +19,6 @@ class ListItemModal extends Component {
         event.preventDefault();
         console.table(this.state);
         const newListItem = {
-            id : 5,
             name:this.state.name,
             quantity:this.state.quantity
         }
@@ -48,15 +48,17 @@ class ListItemModal extends Component {
                                     onChange={this.onChange} />
                             </FormGroup>
                         </Form>
-                        <Button className="remove-btn" color="danger" onClick={this.toggle}>Cancel</Button>
-                        <Button color="primary" onClick={this.submit}>Submit</Button>
+                        <Button color="success" block onClick={this.submit}>Submit</Button>
                     </ModalBody>
                 </Modal>
             </div>
-
         );
     }
 
+}
+ListItemModal.propTypes = {
+    addListItem: PropTypes.func.isRequired,
+    itemList: PropTypes.object.isRequired
 }
 const mapStateToProps = (state) => ({
     itemList: state.itemList

@@ -1,27 +1,31 @@
-import { GET_LIST_ITEM, ADD_LIST_ITEM, DELETE_LIST_ITEM } from '../actions/constants';
+import { GET_LIST_ITEM, ADD_LIST_ITEM, DELETE_LIST_ITEM, INIT_LIST_LOAD } from '../actions/constants';
 const initState = {
-    myItems: [
-        { id: 3, name: 'Apple', quantity: 5 },
-        { id: 1, name: 'Mango', quantity: 8 },
-        { id: 2, name: 'Grapes', quantity: 2 }
-    ]
+    myItems: [],
+    isLoading: false
 }
 
 export default (state = initState, action) => {
     switch (action.type) {
-        case GET_LIST_ITEM:
-            return {
-                ...state
-            }
-        case DELETE_LIST_ITEM:
+        case INIT_LIST_LOAD:
             return {
                 ...state,
-                myItems: state.myItems.filter(item => item.id !== action.payload)
+                isLoading: true
+            }
+        case GET_LIST_ITEM:
+            return {
+                ...state,
+                myItems: action.payload,
+                isLoading: false
             }
         case ADD_LIST_ITEM:
             return {
                 ...state,
-                myItems: [action.payload,...state.myItems]
+                myItems: [action.payload, ...state.myItems]
+            }
+        case DELETE_LIST_ITEM:
+            return {
+                ...state,
+                myItems: state.myItems.filter(item => item._id !== action.payload)
             }
         default:
             return state;

@@ -7,35 +7,40 @@ import PropTypes from 'prop-types';
 import ListItemModal from './ListItemModal';
 
 class MyItem extends Component {
-    removeItem = id => {
-        this.props.deleteListItem(id);
-    }
-
     componentDidMount() {
         this.props.getListItems();
     }
+    removeItem = id => this.props.deleteListItem(id);
+    formatDate = val => {
+        const dt = new Date(val);
+        return `${dt.toLocaleDateString()}`;
+    }
     render() {
         const { myItems } = this.props.itemList;
-        console.log(myItems);
         return (
             <Container fluid="sm">
                 <ListItemModal />
                 <ListGroup>
                     <TransitionGroup className="my-list">
                         {
-                            myItems.map(({ id, name, quantity }) => (
-                                <CSSTransition key={id} timeout={500} classNames="fade">
+                            myItems.map(({ _id, name, quantity, createdOn }) => (
+                                <CSSTransition key={_id} timeout={500} classNames="fade">
                                     <ListGroupItem tag="a">
                                         <Row>
                                             <Col xs="auto">
                                                 <Button className="remove-btn" color="danger" size="sm"
-                                                    onClick={() => this.removeItem(id)}>&times;</Button>
+                                                    onClick={() => this.removeItem(_id)}>&times;</Button>
                                             </Col>
                                             <Col xs="4">
                                                 <Label>{name}</Label>
                                             </Col>
-                                            <Col xs="4">
+                                            <Col xs="2">
                                                 <Label><Badge size="md">{quantity}</Badge></Label>
+                                            </Col>
+                                            <Col xs="2">
+                                                <Label>
+                                                    {this.formatDate(createdOn)}
+                                                </Label>
                                             </Col>
                                         </Row>
                                     </ListGroupItem>

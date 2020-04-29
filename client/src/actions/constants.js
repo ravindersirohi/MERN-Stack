@@ -1,3 +1,4 @@
 export const GET_LIST_ITEM = 'GET_LIST_ITEM';
 export const ADD_LIST_ITEM = 'ADD_LIST_ITEM';
 export const DELETE_LIST_ITEM = 'DELETE_LIST_ITEM';
+export const INIT_LIST_LOAD = 'INIT_LIST_LOAD';
