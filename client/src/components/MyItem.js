@@ -1,34 +1,37 @@
 import React, { Component } from 'react';
 import { Container, Button, ListGroup, ListGroupItem, Row, Col, Label, Badge } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { connect } from 'react-redux';
+import { getListItems } from '../actions/ListAction';
+import PropTypes from 'prop-types';
 
 class MyItem extends Component {
+    addItem = event => {
+        console.log('AddI tem');
+    }
+    removeItem = event => {
+        console.log('Remove Item');
+    }
+
+    componentDidMount() {
+        this.props.getListItems();
+    }
     render() {
-        const items = () => [
-            { id: 1, name: 'Mango', quantity: 8 },
-            { id: 2, name: 'Grapes', quantity: 2 },
-            { id: 3, name: 'Apple', quantity: 5 }
-        ];
-        console.log(items());
-        const addItem = event => {
-            console.log('AddI tem');
-        }
-        const removeItem = event => {
-            console.log('Remove Item');
-        }
+        const { myItems } = this.props.itemList;
+        console.log(myItems);
         return (
             <Container fluid="sm">
-                <Button color="dark" onClick={() => addItem()} >Add</Button>
+                <Button color="dark" onClick={() => this.addItem()} >Add</Button>
                 <ListGroup>
                     <TransitionGroup className="my-list">
                         {
-                            items().map(({ id, name, quantity }) => (
+                            myItems.map(({ id, name, quantity }) => (
                                 <CSSTransition key={id} timeout={500} classNames="fade">
                                     <ListGroupItem tag="a">
                                         <Row>
                                             <Col xs="auto">
                                                 <Button className="remove-btn" color="danger" size="sm"
-                                                    onClick={() => removeItem()}>&times;</Button>
+                                                    onClick={() => this.removeItem()}>&times;</Button>
                                             </Col>
                                             <Col xs="4">
                                                 <Label>{name}</Label>
@@ -48,4 +51,13 @@ class MyItem extends Component {
     }
 }
 
-export default MyItem;
+MyItem.propTypes = {
+    getListItems: PropTypes.func.isRequired,
+    itemList: PropTypes.object.isRequired
+}
+
+const mapStateToProps = (state) => ({
+    itemList: state.itemList
+});
+
+export default connect(mapStateToProps, { getListItems })(MyItem);
