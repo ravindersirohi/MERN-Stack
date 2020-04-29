@@ -13,6 +13,11 @@ export default (state = initState, action) => {
             return {
                 ...state
             }
+        case DELETE_LIST_ITEM:
+            return {
+                ...state,
+                myItems: state.myItems.filter(item => item.id !== action.payload)
+            }
         default:
             return state;
     }

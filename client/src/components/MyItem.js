@@ -2,15 +2,13 @@ import React, { Component } from 'react';
 import { Container, Button, ListGroup, ListGroupItem, Row, Col, Label, Badge } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { connect } from 'react-redux';
-import { getListItems } from '../actions/ListAction';
+import { getListItems, deleteListItem } from '../actions/ListAction';
 import PropTypes from 'prop-types';
+import ListItemModal from './ListItemModal';
 
 class MyItem extends Component {
-    addItem = event => {
-        console.log('AddI tem');
-    }
-    removeItem = event => {
-        console.log('Remove Item');
+    removeItem = id => {
+        this.props.deleteListItem(id);
     }
 
     componentDidMount() {
@@ -21,7 +19,7 @@ class MyItem extends Component {
         console.log(myItems);
         return (
             <Container fluid="sm">
-                <Button color="dark" onClick={() => this.addItem()} >Add</Button>
+                <ListItemModal />
                 <ListGroup>
                     <TransitionGroup className="my-list">
                         {
@@ -31,7 +29,7 @@ class MyItem extends Component {
                                         <Row>
                                             <Col xs="auto">
                                                 <Button className="remove-btn" color="danger" size="sm"
-                                                    onClick={() => this.removeItem()}>&times;</Button>
+                                                    onClick={() => this.removeItem(id)}>&times;</Button>
                                             </Col>
                                             <Col xs="4">
                                                 <Label>{name}</Label>
@@ -53,6 +51,7 @@ class MyItem extends Component {
 
 MyItem.propTypes = {
     getListItems: PropTypes.func.isRequired,
+    deleteListItem: PropTypes.func.isRequired,
     itemList: PropTypes.object.isRequired
 }
 
@@ -60,4 +59,7 @@ const mapStateToProps = (state) => ({
     itemList: state.itemList
 });
 
-export default connect(mapStateToProps, { getListItems })(MyItem);
+export default connect(mapStateToProps, {
+    getListItems,
+    deleteListItem,
+})(MyItem);

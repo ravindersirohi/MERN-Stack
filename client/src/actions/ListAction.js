@@ -5,3 +5,15 @@ export const getListItems = () => {
         type: GET_LIST_ITEM
     };
 };
+export const deleteListItem = id => {
+    return {
+        type: DELETE_LIST_ITEM,
+        payload: id
+    };
+};
+export const addListItem = listItem => {
+    return {
+        type: DELETE_LIST_ITEM,
+        payload: listItem
+    };
+};

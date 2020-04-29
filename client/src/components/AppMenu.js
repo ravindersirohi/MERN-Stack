@@ -20,7 +20,7 @@ class AppMenu extends Component {
                         <Collapse isOpen={this.state.isOpen} navbar>
                             <Nav className="ml-auto" navbar>
                                 <NavItem>
-                                    <NavLink href="https://github.com/ravindersirohi/">Github</NavLink>
+                                    <NavLink href="https://github.com/ravindersirohi/" target="_blank">Github</NavLink>
                                 </NavItem>
                             </Nav>
                         </Collapse>
